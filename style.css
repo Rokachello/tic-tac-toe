@@ -1,0 +1,26 @@
+.cell{
+    width: 100px;
+    height: 100px;
+    background-color: orange;
+    border: 1px solid black;
+    font-size: 50px;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+}
+#gameboard-container{
+    display: flex;
+    flex-direction: column;
+}
+.row{
+    display: flex;
+}
+
+.color{
+    background-color: brown;
+}
+
+.win{
+    
+}
+
