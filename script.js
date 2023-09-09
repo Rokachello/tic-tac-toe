@@ -7,6 +7,11 @@ const symbolO= "o"
 let currentSymbol ="x"
 let currentPlayer = clickedCelsP1
 const winnerText = document.querySelector(".win")
+winnerText.textContent = " "
+const playAgain = document.querySelector(".play-again")
+let p1 = 0
+let p2 = 0
+let score = document.querySelector(".score")
 
 const winningCombinations = [[1,2,3],[4,5,6],[7,8,9],
                              [1,4,7],[2,5,8],[3,6,9],
@@ -50,17 +55,45 @@ cells.forEach(cell => {
             if(clickedCelsP1 == currentPlayer){
                 console.log("P1 wins")
                 winnerText.textContent = "P1 -x- wins"
+                p1++
             } 
             if(clickedCelsP2 == currentPlayer){
                 console.log("P2 wins")
                 winnerText.textContent = "P2 -o- wins"
+                p2++
             }
             endGame = true
+            score.textContent = "score    " + p1 + " : " + p2
+            playAgain.classList.add("btn-visible")
         }
-        console.log(winner)
-        nextSymbol(),
-        nextPlayer(),
-       console.log("P1: " + clickedCelsP1 + "  P2: " + clickedCelsP2)
+        if(clickedCelsP1.length > 4){
+            winnerText.textContent = "DRAW"
+            endGame = true
+            playAgain.classList.add("btn-visible")
+        }
+        nextSymbol()
+        nextPlayer()
         }
     }
     )})
+
+    // Play again button shown at the end of each round
+    playAgain.addEventListener("click", () => {
+ clickedCelsP1 = []
+ clickedCelsP2 = []
+ endGame = false
+ currentSymbol ="x"
+ currentPlayer = clickedCelsP1
+ resetBoard()
+    })
+
+    const resetBoard = () => {
+        cells.forEach(cell => {
+            cell.textContent = ""
+            winnerText.textContent = ""
+            playAgain.classList.remove("btn-visible")
+        })
+    }
+
+
+   

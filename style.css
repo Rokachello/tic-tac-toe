@@ -11,16 +11,26 @@
 #gameboard-container{
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+#info-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .row{
     display: flex;
 }
-
 .color{
     background-color: brown;
 }
-
-.win{
-    
+.play-again{
+    visibility: hidden;
+}
+.btn-visible{
+   visibility: visible;
 }
 
+.win{
+    height: 1rem;
+}
