@@ -9,7 +9,24 @@
 </head>
 <body>
     <h1> Tic Tac Toe</h1>
+    <dialog open>
+        <p class="big">Tic Tac Toe challenge</p>
+        <form method="dialog">
 
+            <div class="players">
+                <div class="player-input">
+                    <label for="player-one-name">Player one name:</label>
+                    <input type="text" id="player-one-name" name="player-one-name" required>
+                </div>
+                <div class="player-input">
+                    <label for="player-two-name">Player two name:</label>
+                    <input type="text" id="player-two-name" name="player-two-name" required>
+                </div>
+            </div>
+            <button class="ready-btn">Ready</button>
+        </form>
+      </dialog>
+      <p class="turn"> </p>
     <div id="gameboard-container"> 
         <div class="row">
             <div class="cell" id="1"></div>
@@ -29,6 +46,7 @@
     </div>
 
     <div id="info-container">
+        
         <h2 class="win"></h2>
         <p class="score"> </p>
         <button class="play-again"> Play again </button>

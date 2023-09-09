@@ -9,15 +9,30 @@ let currentPlayer = clickedCelsP1
 const winnerText = document.querySelector(".win")
 winnerText.textContent = " "
 const playAgain = document.querySelector(".play-again")
-let p1 = 0
-let p2 = 0
+let pointsP1 = 0
+let pointsP2 = 0
+let playerOneName = "player one"
+let playerTwoName = "player two"
 let score = document.querySelector(".score")
+console.log(playerOneName)
+const readyButton = document.querySelector(".ready-btn")
+const playerTurn = document.querySelector(".turn")
+playerTurn.textContent = playerOneName+"'s turn"
+
+readyButton.addEventListener("click", () => {
+    playerOneName = document.getElementById("player-one-name").value
+    playerTwoName = document.getElementById("player-two-name").value
+    playerTurn.textContent = playerOneName+"'s turn"
+})
+
+
 
 const winningCombinations = [[1,2,3],[4,5,6],[7,8,9],
                              [1,4,7],[2,5,8],[3,6,9],
                              [1,5,9],[3,5,7]]
 
-const nextSymbol = ()=>{
+
+const nextSymbol = () => {
     if(currentSymbol == symbolX){
         currentSymbol = symbolO
     } else {
@@ -28,8 +43,10 @@ const nextSymbol = ()=>{
 const nextPlayer = () => {
     if(currentPlayer==clickedCelsP1){
         currentPlayer=clickedCelsP2
+        playerTurn.textContent = playerTwoName+"'s turn"
     } else {
         currentPlayer=clickedCelsP1
+        playerTurn.textContent = playerOneName+"'s turn"
     }
     return currentPlayer
 }
@@ -54,16 +71,16 @@ cells.forEach(cell => {
         if(winner){
             if(clickedCelsP1 == currentPlayer){
                 console.log("P1 wins")
-                winnerText.textContent = "P1 -x- wins"
-                p1++
+                winnerText.textContent = playerOneName +" wins"
+                pointsP1++
             } 
             if(clickedCelsP2 == currentPlayer){
                 console.log("P2 wins")
-                winnerText.textContent = "P2 -o- wins"
-                p2++
+                winnerText.textContent = playerTwoName + " wins"
+                pointsP2++
             }
             endGame = true
-            score.textContent = "score    " + p1 + " : " + p2
+            score.textContent = playerOneName +" "+ pointsP1 + " : " + pointsP2 + " " + playerTwoName
             playAgain.classList.add("btn-visible")
         }
         if(clickedCelsP1.length > 4){
@@ -84,6 +101,7 @@ cells.forEach(cell => {
  endGame = false
  currentSymbol ="x"
  currentPlayer = clickedCelsP1
+ playerTurn.textContent = playerOneName+"'s turn"
  resetBoard()
     })
 
@@ -94,6 +112,8 @@ cells.forEach(cell => {
             playAgain.classList.remove("btn-visible")
         })
     }
+
+
 
 
    
